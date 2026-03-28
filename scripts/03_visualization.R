@@ -1,61 +1,40 @@
-# 04_inferential_analysis.R
+# 03_visualization.R
 
-library(EnvStats)
-library(vcd)
+library(ggplot2)
 
 # Load cleaned data
 dt1_cleaned <- readRDS("data/dt1_cleaned.rds")
 
-# =========================
-# Case 1: Doctor vs Salesperson
-# =========================
+# Boxplot: Stress Level
+ggplot(dt1_cleaned, aes(y = Stress.Level)) +
+  geom_boxplot(fill = "steelblue") +
+  labs(title = "Boxplot of Stress Level", y = "Stress Level") +
+  theme(plot.title = element_text(hjust = 0.5))
 
-doctors <- dt1_cleaned$Sleep.Duration[dt1_cleaned$Occupation == "Doctor"]
-salespersons <- dt1_cleaned$Sleep.Duration[dt1_cleaned$Occupation == "Salesperson"]
+# Pie Chart: Sleep Disorder Distribution
+sleep_dist <- as.data.frame(table(dt1_cleaned$Sleep.Disorder))
+colnames(sleep_dist) <- c("SleepDisorder", "Count")
+sleep_dist$Percentage <- round(100 * sleep_dist$Count / sum(sleep_dist$Count), 1)
 
-rosner_doctors <- rosnerTest(doctors, k = 5)
-rosner_sales <- rosnerTest(salespersons, k = 5)
-print(rosner_doctors)
-print(rosner_sales)
+gradient_colors <- colorRampPalette(c("darkblue", "skyblue", "blue"))(length(sleep_dist$Count))
 
-shapiro.test(doctors)
-shapiro.test(salespersons)
-
-wilcox.test(doctors, salespersons, alternative = "less")
-
-# =========================
-# Case 2: Physical Activity vs Stress Level
-# =========================
-
-rosner_test_activity <- rosnerTest(dt1_cleaned$Physical.Activity.Level, k = 5)
-rosner_test_stress <- rosnerTest(dt1_cleaned$Stress.Level, k = 5)
-print(rosner_test_activity)
-print(rosner_test_stress)
-
-shapiro.test(dt1_cleaned$Physical.Activity.Level)
-shapiro.test(dt1_cleaned$Stress.Level)
-
-cor.test(
-  dt1_cleaned$Physical.Activity.Level,
-  dt1_cleaned$Stress.Level,
-  method = "spearman",
-  exact = FALSE
+pie(
+  sleep_dist$Count,
+  labels = paste0(sleep_dist$SleepDisorder, " (", sleep_dist$Percentage, "%)"),
+  main = "Sleep Disorder Distribution",
+  col = gradient_colors
 )
 
-# =========================
-# Case 3: Gender vs Sleep Disorder
-# =========================
+# Histogram: Quality of Sleep
+ggplot(dt1_cleaned, aes(x = Quality.of.Sleep)) +
+  geom_histogram(binwidth = 1, fill = "steelblue", color = "black", boundary = 0.5) +
+  scale_x_continuous(breaks = 1:10) +
+  labs(title = "Histogram of Quality of Sleep", x = "Quality of Sleep", y = "Frequency") +
+  theme(plot.title = element_text(hjust = 0.5))
 
-case3_table <- table(dt1_cleaned$Gender, dt1_cleaned$Sleep.Disorder)
-
-chi_test <- chisq.test(case3_table)
-print(chi_test)
-
-mosaicplot(
-  case3_table,
-  shade = TRUE,
-  color = TRUE,
-  main = "Association between Gender and Sleep Disorder",
-  xlab = "Gender",
-  ylab = "Sleep Disorder"
-)
+# Bar Chart: Occupation Distribution
+ggplot(dt1_cleaned, aes(x = Occupation)) +
+  geom_bar(fill = "steelblue") +
+  labs(title = "Distribution by Occupation", x = "Occupation", y = "Count") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme(plot.title = element_text(hjust = 0.5))
