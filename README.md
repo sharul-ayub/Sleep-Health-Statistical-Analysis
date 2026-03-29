@@ -1,114 +1,110 @@
-# Sleep-Health-Statistical-Analysis
-R-based statistical analysis of Sleep Health dataset including data cleaning, visualization, and inferential hypothesis testing.
-# 💤 Sleep Health Statistical Analysis (R)
+# Sleep Health Statistical Analysis Using R
 
-## 📖 Overview
-This project analyzes the **Sleep Health dataset** to explore relationships between lifestyle factors, demographic variables, and sleep outcomes using statistical computing techniques in R.
+## Project Overview
+This project applies statistical computing and data mining techniques to analyze a Sleep Health dataset, with the objective of understanding how lifestyle and demographic factors influence sleep outcomes.
 
-The study includes:
-- Data preprocessing and cleaning
-- Exploratory data analysis (EDA)
-- Data visualization
-- Hypothesis testing using statistical methods
+The analysis focuses on data preprocessing, visualization, and hypothesis testing using R. The project is structured as a reproducible analytical pipeline, enabling end-to-end execution from raw data to statistical insights.
 
 ---
 
-## 📂 Dataset
+## Business / Research Problem
+Sleep health is a critical determinant of physical and mental well-being. However, modern lifestyles introduce factors such as stress, irregular routines, and varying activity levels that may influence sleep quality.
 
-- **Dataset**: Sleep Health Dataset
-- **Observations**: 374 (original), 346 (cleaned)
-- **Features**: 10 variables
-
-### Key Variables:
-- Sleep Duration
-- Quality of Sleep
-- Physical Activity Level
-- Stress Level
-- Sleep Disorder
-- Occupation
-- Gender
-
-> Missing values are encoded as `-1` and handled during preprocessing.
+This project aims to:
+- Identify patterns in sleep behavior
+- Evaluate relationships between lifestyle variables and sleep outcomes
+- Test statistical claims using appropriate inferential methods
 
 ---
 
-## ⚙️ Methodology
+## Dataset
+- **Name**: Sleep Health Dataset  
+- **Initial Size**: 374 observations, 10 variables  
+- **Cleaned Size**: 346 observations (after removing missing values)  
+- **Missing Value Encoding**: `-1` treated as NA  
 
-### 1. Data Cleaning
-- Converted `-1` → NA
-- Removed missing values
-- Final dataset: 346 rows
-
-### 2. Data Transformation
-- Converted variables to appropriate types:
-  - Factor (categorical)
-  - Numeric / Integer
-
----
-
-## 📊 Data Visualization
-
-The following visualizations were created:
-
-- 📦 Boxplot → Stress Level distribution  
-- 🥧 Pie Chart → Sleep Disorder distribution  
-- 📊 Histogram → Quality of Sleep  
-- 📊 Bar Chart → Occupation distribution  
+### Key Variables
+- Sleep Duration  
+- Quality of Sleep  
+- Physical Activity Level  
+- Stress Level  
+- Sleep Disorder  
+- Occupation  
+- Gender  
 
 ---
 
-## 🔬 Statistical Analysis
+## Methodology
 
-### 📌 Case Study 1
-**Question:** Do doctors sleep less than salespersons?
+### 1. Data Preprocessing
+- Converted incorrect data types into appropriate formats (factor, numeric, integer)
+- Replaced placeholder values (`-1`) with missing values (NA)
+- Removed incomplete observations using `na.omit()`
 
+### 2. Exploratory Data Analysis
+Visualizations were generated to understand distribution and patterns:
+- Boxplot of stress levels
+- Histogram of sleep quality
+- Pie chart of sleep disorder distribution
+- Bar chart of occupation distribution
+
+### 3. Statistical Analysis
+
+#### Case Study 1: Occupational Sleep Duration
 - Test: Wilcoxon Rank-Sum Test  
-- Result: ❌ No significant difference (p > 0.05)
+- Objective: Compare sleep duration between doctors and salespersons  
+- Result: No statistically significant difference  
+
+#### Case Study 2: Physical Activity vs Stress
+- Test: Spearman Rank Correlation  
+- Objective: Assess relationship between activity level and stress  
+- Result: No significant correlation detected  
+
+#### Case Study 3: Gender vs Sleep Disorder
+- Test: Chi-Square Test of Independence  
+- Objective: Evaluate association between gender and sleep disorder  
+- Result: Statistically significant association identified  
 
 ---
 
-### 📌 Case Study 2
-**Question:** Is there a relationship between physical activity and stress?
-
-- Test: Spearman Correlation  
-- Result: ❌ No significant relationship (p > 0.05)
-
----
-
-### 📌 Case Study 3
-**Question:** Is there an association between gender and sleep disorder?
-
-- Test: Chi-Square Test  
-- Result: ✅ Significant association (p < 0.05)
-
----
-
-## 📈 Key Insights
-
-- Majority of individuals have **no sleep disorder (~58%)**
-- Sleep quality is generally **moderate to high (6–9 range)**
-- No strong link between:
-  - Physical activity and stress
+## Key Findings
+- Majority of individuals do not exhibit sleep disorders (~58%)
+- Sleep quality is generally moderate to high (scores concentrated between 6–9)
+- No significant relationship between:
+  - Physical activity and stress levels
   - Occupation and sleep duration
-- Strong association found between:
-  - Gender and sleep disorder
+- A strong association exists between gender and sleep disorder patterns
 
 ---
 
-## 🛠 Tools Used
+## Visual Results
 
-- R Programming
-- ggplot2
-- EnvStats
-- vcd
+### Stress Level Distribution
+![Stress Boxplot](images/boxplot_stress_level.png)
+
+### Sleep Disorder Distribution
+![Sleep Disorder Pie](images/pie_sleep_disorder.png)
+
+### Quality of Sleep Distribution
+![Sleep Quality Histogram](images/histogram_sleep_quality.png)
+
+### Occupation Distribution
+![Occupation Bar Chart](images/bar_occupation.png)
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```bash
+Sleep-Health-Statistical-Analysis/
 ├── data/
+│   ├── Sleep_Health.csv
+│   └── dt1_cleaned.rds
 ├── scripts/
+│   ├── 01_data_overview.R
+│   ├── 02_data_cleaning.R
+│   ├── 03_visualization.R
+│   ├── 04_inferential_analysis.R
 ├── images/
-├── results/
-├── README.md
+├── run_analysis.R
+└── README.md
