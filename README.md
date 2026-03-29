@@ -77,21 +77,42 @@ Visualizations were generated to understand distribution and patterns:
 
 ---
 
-## Visual Results
+### Visual Results
 
-### Stress Level Distribution
-![Stress Boxplot](images/boxplot_stress_level.png)
+#### Stress Level Distribution
+<p align="center">
+  <img src="images/boxplot_stress_level.png" alt="Boxplot showing distribution of stress levels" width="500"/>
+</p>
 
-### Sleep Disorder Distribution
-![Sleep Disorder Pie](images/pie_sleep_disorder.png)
+**Interpretation:**  
+Stress levels are moderately distributed, with values ranging from 3 to 8. The median is 5, and the middle 50% of observations lie between 4 and 7. This indicates that most individuals experience moderate stress levels, with no extreme outliers observed.
 
-### Quality of Sleep Distribution
-![Sleep Quality Histogram](images/histogram_sleep_quality.png)
 
-### Occupation Distribution
-![Occupation Bar Chart](images/bar_occupation.png)
+#### Sleep Disorder Distribution
+<p align="center">
+  <img src="images/pie_sleep_disorder.png" alt="Pie chart showing distribution of sleep disorders" width="500"/>
+</p>
 
----
+**Interpretation:**  
+The majority of individuals (58.4%) do not experience any sleep disorder. Among those affected, Sleep Apnea is the most prevalent (22%), followed by Insomnia (19.7%). This suggests that while most individuals have normal sleep patterns, a notable proportion experience clinically relevant sleep conditions.
+
+
+#### Quality of Sleep Distribution
+<p align="center">
+  <img src="images/histogram_sleep_quality.png" alt="Histogram showing distribution of sleep quality scores" width="500"/>
+</p>
+
+**Interpretation:**  
+Sleep quality is concentrated in the higher range, with peaks at scores of 6, 8, and 9. The highest frequency occurs at score 8, indicating that many individuals report good sleep quality. Overall, the distribution suggests that most participants experience moderate to high sleep quality.
+
+
+#### Occupation Distribution
+<p align="center">
+  <img src="images/bar_occupation.png" alt="Bar chart showing distribution of occupations" width="500"/>
+</p>
+
+**Interpretation:**  
+The dataset is dominated by healthcare and technical professions, with Nurses (73), Doctors (71), and Engineers (63) representing the largest groups. This concentration suggests that insights derived from the analysis may be more reflective of these occupational categories.
 
 ## Project Structure
 
