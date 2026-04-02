@@ -42,12 +42,48 @@ This project aims to:
 - Removed incomplete observations using `na.omit()`
 
 ### 2. Exploratory Data Analysis
-Visualizations were generated to understand distribution and patterns:
-- Boxplot of stress levels
-- Histogram of sleep quality
-- Pie chart of sleep disorder distribution
-- Bar chart of occupation distribution
 
+Visualizations were generated to understand the distribution and patterns within the dataset.
+
+---
+
+#### Stress Level Distribution
+<p align="center">
+  <img src="images/boxplot_stress_level.png" alt="Boxplot showing distribution of stress levels" width="500"/>
+</p>
+
+**Key Insight:**  
+Stress levels are moderately distributed, ranging from 3 to 8. The median is 5, with the interquartile range between 4 and 7. This indicates that most individuals experience moderate stress levels, with no significant outliers observed.
+
+---
+
+#### Sleep Quality Distribution
+<p align="center">
+  <img src="images/histogram_sleep_quality.png" alt="Histogram showing distribution of sleep quality scores" width="500"/>
+</p>
+
+**Key Insight:**  
+Sleep quality is skewed toward higher values, with peaks at scores of 6, 8, and 9. The highest frequency occurs at score 8, suggesting that a large proportion of individuals report good sleep quality. Overall, most participants experience moderate to high sleep quality.
+
+---
+
+#### Sleep Disorder Distribution
+<p align="center">
+  <img src="images/pie_sleep_disorder.png" alt="Pie chart showing distribution of sleep disorders" width="500"/>
+</p>
+
+**Key Insight:**  
+The majority of individuals (58.4%) do not experience any sleep disorder. Among those affected, Sleep Apnea (22%) is more prevalent than Insomnia (19.7%). This indicates that while most individuals have normal sleep patterns, a meaningful proportion experience clinically relevant sleep conditions.
+
+---
+
+#### Occupation Distribution
+<p align="center">
+  <img src="images/bar_occupation.png" alt="Bar chart showing distribution of occupations" width="500"/>
+</p>
+
+**Key Insight:**  
+The dataset is heavily represented by healthcare and technical professions, with Nurses (73), Doctors (71), and Engineers (63) forming the largest groups. This concentration suggests that insights derived from the analysis may be more reflective of these occupational segments.
 ### 3. Statistical Analysis
 
 #### Case Study 1: Occupational Sleep Duration
@@ -75,57 +111,4 @@ Visualizations were generated to understand distribution and patterns:
   - Occupation and sleep duration
 - A strong association exists between gender and sleep disorder patterns
 
----
 
-### Visual Results
-
-#### Stress Level Distribution
-<p align="center">
-  <img src="images/boxplot_stress_level.png" alt="Boxplot showing distribution of stress levels" width="500"/>
-</p>
-
-**Interpretation:**  
-Stress levels are moderately distributed, with values ranging from 3 to 8. The median is 5, and the middle 50% of observations lie between 4 and 7. This indicates that most individuals experience moderate stress levels, with no extreme outliers observed.
-
-
-#### Sleep Disorder Distribution
-<p align="center">
-  <img src="images/pie_sleep_disorder.png" alt="Pie chart showing distribution of sleep disorders" width="500"/>
-</p>
-
-**Interpretation:**  
-The majority of individuals (58.4%) do not experience any sleep disorder. Among those affected, Sleep Apnea is the most prevalent (22%), followed by Insomnia (19.7%). This suggests that while most individuals have normal sleep patterns, a notable proportion experience clinically relevant sleep conditions.
-
-
-#### Quality of Sleep Distribution
-<p align="center">
-  <img src="images/histogram_sleep_quality.png" alt="Histogram showing distribution of sleep quality scores" width="500"/>
-</p>
-
-**Interpretation:**  
-Sleep quality is concentrated in the higher range, with peaks at scores of 6, 8, and 9. The highest frequency occurs at score 8, indicating that many individuals report good sleep quality. Overall, the distribution suggests that most participants experience moderate to high sleep quality.
-
-
-#### Occupation Distribution
-<p align="center">
-  <img src="images/bar_occupation.png" alt="Bar chart showing distribution of occupations" width="500"/>
-</p>
-
-**Interpretation:**  
-The dataset is dominated by healthcare and technical professions, with Nurses (73), Doctors (71), and Engineers (63) representing the largest groups. This concentration suggests that insights derived from the analysis may be more reflective of these occupational categories.
-
-## Project Structure
-
-```bash
-Sleep-Health-Statistical-Analysis/
-├── data/
-│   ├── Sleep_Health.csv
-│   └── dt1_cleaned.rds
-├── scripts/
-│   ├── 01_data_overview.R
-│   ├── 02_data_cleaning.R
-│   ├── 03_visualization.R
-│   ├── 04_inferential_analysis.R
-├── images/
-├── run_analysis.R
-└── README.md
